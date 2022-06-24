@@ -15,6 +15,7 @@ import useStore from 'lib/store'
 import axios from 'axios'
 import { sentryCaptureException } from 'lib/sentry'
 import { GTM_ID, pageview } from 'lib/gtm'
+import RPCStatus from 'components/Common/RPCStatus'
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -98,6 +99,7 @@ const App = ({ Component, pageProps }) => {
         }}
       />
       <Component {...pageProps} isLoading={isLoading} />
+      <RPCStatus />
     </ToastProvider>
   )
 }
