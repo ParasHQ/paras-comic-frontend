@@ -7,7 +7,7 @@ import near from 'lib/near'
 import Button from './Button'
 import Avatar from './Avatar'
 
-import { IconLogout } from 'components/Icons'
+import { IconLogout, IconSearch } from 'components/Icons'
 import { parseImgUrl, prettyBalance } from 'utils/common'
 import useStore from 'lib/store'
 import LoginModal from 'components/Modal/LoginModal'
@@ -67,6 +67,17 @@ const Nav = () => {
     router.push(`/${near.getAccount()?.accountId}`)
   }
 
+  const _handleSubmit = (event) => {
+    const data = new FormData(event.target)
+    event.preventDefault()
+    router.push({
+      pathname: '/search',
+      query: {
+        q: data.get('q'),
+      },
+    })
+  }
+
   const ProfileModal = () => {
     return (
       <div className="absolute right-0 mt-3 z-30">
@@ -121,6 +132,34 @@ const Nav = () => {
     )
   }
 
+  const InputSearch = ({ handleSubmit }) => {
+    return (
+      <div className="flex-1 mr-4">
+        <div className="max-w-sm mr-auto flex items-center">
+          <form
+            action="/search"
+            method="get"
+            onSubmit={handleSubmit}
+            autoComplete="off"
+          >
+            <div className="flex border-primary border-2 rounded-lg bg-white">
+              <IconSearch size={36} color={'#00bbdb'} />
+              <input
+                id="search"
+                name="q"
+                type="search"
+                value={router.query.search}
+                placeholder="Search by author, comic, chapter, etc"
+                className="input-text-search -mx-2 p-1 pr-2.5 bg-transparent focus:bg-transparent border-none text-black text-base md:text-sm font-medium"
+                style={{ WebkitAppearance: 'none' }}
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       <LoginModal
@@ -130,7 +169,7 @@ const Nav = () => {
       />
       <div ref={mobileMenuRef} className="bg-background sticky z-30 top-0">
         <div className="relative bg-background max-w-6xl m-auto flex py-2 px-4 items-center justify-between z-40">
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center gap-4 md:hidden">
             <HamburgerMenu
               isOpen={showHamburgerMenu}
               menuClicked={onClickHamburger}
@@ -142,16 +181,10 @@ const Nav = () => {
               borderRadius={0}
               animationDuration={0.3}
             />
-            <div className="pl-4">
-              <Link href="/">
-                <a className="block w-24">
-                  <img className="hover:opacity-80" src="/paras-comic.png" />
-                </a>
-              </Link>
-            </div>
+            <InputSearch handleSubmit={(e) => _handleSubmit(e)} />
           </div>
           <div className="hidden md:flex space-x-6 text-xl font-normal text-black items-center">
-            <div className="w-24 mr-4">
+            <div className="w-24">
               <Link href="/">
                 <a>
                   <img
@@ -161,6 +194,7 @@ const Nav = () => {
                 </a>
               </Link>
             </div>
+            <InputSearch handleSubmit={(e) => _handleSubmit(e)} />
             <Link href="/">
               <a className="block font-semibold hover:text-primary text-base">
                 <span className={router.pathname === '/' ? `text-primary` : ''}>
@@ -236,7 +270,7 @@ const Nav = () => {
                 >
                   <Avatar
                     className="w-10 h-10 align-middle"
-                    size="md"
+                    size="lg"
                     entityName={currentUser?.accountId || ''}
                     src={parseImgUrl(currentUser?.imgUrl || '')}
                   />
@@ -259,13 +293,26 @@ const Nav = () => {
                 {showProfileModal && ProfileModal()}
               </div>
             ) : (
-              <Button
-                variant="primary"
-                size="md"
-                onClick={() => setShowLoginModal(true)}
-              >
-                Login
-              </Button>
+              <>
+                <div className="hidden md:block">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    onClick={() => setShowLoginModal(true)}
+                  >
+                    Login
+                  </Button>
+                </div>
+                <div className="md:hidden">
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    onClick={() => setShowLoginModal(true)}
+                  >
+                    Login
+                  </Button>
+                </div>
+              </>
             )}
           </div>
         </div>
