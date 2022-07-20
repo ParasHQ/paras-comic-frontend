@@ -215,14 +215,14 @@
     "@draft-js-plugins/buttons" "^4.0.0"
     "@draft-js-plugins/utils" "^4.0.0"
 
-"@draft-js-plugins/linkify@^4.1.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@draft-js-plugins/linkify/-/linkify-4.2.0.tgz#2d455323b878dbb77539dadd51b8fd49216d9d1b"
-  integrity sha512-rL24wS7SKgubnLQ4Ev0TfssZWT08cO1+4nHmc8Jewr2eCmGe0urL3Ig1pe9rkX9pzt28oQ6+VB8Uwmu9tSeJqQ==
+"@draft-js-plugins/linkify@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@draft-js-plugins/linkify/-/linkify-4.2.1.tgz#a6b62a6c9ee3bb0bd164ea5a43e78cc9974fbe42"
+  integrity sha512-xB6J+HrGEbteyBrwQ8u0r+YrjQK6fNDfVBG14A89Ger+o/OiYqwmJs8GAM0C5riqYEJzQqK2mW+UUQCagD+gUQ==
   dependencies:
     clsx "^1.0.4"
     linkify-it "^3.0.3"
-    tlds "^1.225.0"
+    tlds "^1.231.0"
 
 "@draft-js-plugins/static-toolbar@^4.0.0":
   version "4.1.2"
@@ -4620,15 +4620,10 @@ tiny-invariant@^1.0.6:
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.2.0.tgz#a1141f86b672a9148c72e978a19a73b9b94a15a9"
   integrity sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==
 
-tlds@^1.199.0:
-  version "1.221.1"
-  resolved "https://registry.yarnpkg.com/tlds/-/tlds-1.221.1.tgz#6cf6bff5eaf30c5618c5801c3f425a6dc61ca0ad"
-  integrity sha512-N1Afn/SLeOQRpxMwHBuNFJ3GvGrdtY4XPXKPFcx8he0U9Jg9ZkvTKE1k3jQDtCmlFn44UxjVtouF6PT4rEGd3Q==
-
-tlds@^1.221.1, tlds@^1.225.0:
-  version "1.230.0"
-  resolved "https://registry.yarnpkg.com/tlds/-/tlds-1.230.0.tgz#9c836528c4062e565b3b58bfaef83d99e09c113d"
-  integrity sha512-QFuY6JBWZt2bZXlapjqsojul5dv9xfo7Uc8wTUlctJOuF+BS/ICni2f4x7MFiT7muUVmcKC1LvGnU4GWhYO0PQ==
+tlds@^1.199.0, tlds@^1.221.1, tlds@^1.231.0:
+  version "1.231.0"
+  resolved "https://registry.yarnpkg.com/tlds/-/tlds-1.231.0.tgz#93880175cd0a06fdf7b5b5b9bcadff9d94813e39"
+  integrity sha512-L7UQwueHSkGxZHQBXHVmXW64oi+uqNtzFt2x6Ssk7NVnpIbw16CRs4eb/jmKOZ9t2JnqZ/b3Cfvo97lnXqKrhw==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"
